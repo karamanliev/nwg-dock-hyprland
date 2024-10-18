@@ -83,6 +83,7 @@ var marginTop = flag.Int("mt", 0, "Margin Top")
 var noLauncher = flag.Bool("nolauncher", false, "don't show the launcher button")
 var numWS = flag.Int64("w", 10, "number of Workspaces you use")
 var position = flag.String("p", "bottom", "Position: \"bottom\", \"top\" or \"left\"")
+var noTooltips = flag.Bool("notooltips", false, "Hide button tooltips on hover")
 var resident = flag.Bool("r", false, "Leave the program resident, but w/o hotspot")
 var targetOutput = flag.String("o", "", "name of Output to display the dock on")
 
@@ -135,18 +136,20 @@ func buildMainBox(vbox *gtk.Box) {
 		}
 	}
 
-	divider := 1
-	if len(allItems) > 0 {
-		divider = len(allItems)
-	}
+	// divider := 1
+	// if len(allItems) > 0 {
+	// 	divider = len(allItems)
+	// }
 
 	// scale icons down when their number increases
-	if *imgSize*6/(divider) < *imgSize {
-		overflow := (len(allItems) - 6) / 3
-		imgSizeScaled = *imgSize * 6 / (6 + overflow)
-	} else {
-		imgSizeScaled = *imgSize
-	}
+	// if *imgSize*6/(divider) < *imgSize {
+	// 	overflow := (len(allItems) - 6) / 3
+	// 	imgSizeScaled = *imgSize * 6 / (6 + overflow)
+	// } else {
+	// 	imgSizeScaled = *imgSize
+	// }
+
+	imgSizeScaled = *imgSize
 
 	if *launcherPos == "start" {
 		button := launcherButton()
